@@ -1,0 +1,122 @@
+[
+  {
+    "time": "2025-11-22 02:52:48",
+    "tag": "DATA",
+    "info": "Loaded 116 rows, 215 features. Classes=14"
+  },
+  {
+    "time": "2025-11-22 02:52:50",
+    "tag": "SMOTE",
+    "info": "Applied SMOTE(k=1). New size=238"
+  },
+  {
+    "time": "2025-11-22 02:52:50",
+    "tag": "SPLIT",
+    "info": "Train=190, Test=48 | classes=14"
+  },
+  {
+    "time": "2025-11-22 02:53:18",
+    "tag": "TUNE",
+    "info": "rf tuned in 27.2s -> {'n_estimators': 400, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'log2', 'max_depth': 20}"
+  },
+  {
+    "time": "2025-11-22 03:01:03",
+    "tag": "TUNE",
+    "info": "gb tuned in 465.5s -> {'subsample': 0.8, 'n_estimators': 400, 'max_depth': 3, 'learning_rate': 0.01}"
+  },
+  {
+    "time": "2025-11-22 03:02:40",
+    "tag": "TUNE",
+    "info": "et tuned in 96.9s -> {'n_estimators': 1200, 'min_samples_split': 4, 'min_samples_leaf': 1, 'max_features': 'log2', 'max_depth': 30}"
+  },
+  {
+    "time": "2025-11-22 03:11:46",
+    "tag": "DATA",
+    "info": "Loaded 116 rows, 215 features. Classes=14"
+  },
+  {
+    "time": "2025-11-22 03:11:49",
+    "tag": "SMOTE",
+    "info": "Applied SMOTE(k=1). New size=238"
+  },
+  {
+    "time": "2025-11-22 03:11:49",
+    "tag": "SPLIT",
+    "info": "Train=190, Test=48 | n_classes=14"
+  },
+  {
+    "time": "2025-11-22 03:11:49",
+    "tag": "CKPT_LOAD",
+    "info": "Loaded rf best params from checkpoint."
+  },
+  {
+    "time": "2025-11-22 03:11:49",
+    "tag": "CKPT_LOAD",
+    "info": "Loaded gb best params from checkpoint."
+  },
+  {
+    "time": "2025-11-22 03:11:49",
+    "tag": "CKPT_LOAD",
+    "info": "Loaded et best params from checkpoint."
+  },
+  {
+    "time": "2025-11-22 03:11:54",
+    "tag": "XGB",
+    "info": "XGBoost added to ensemble."
+  },
+  {
+    "time": "2025-11-22 03:11:58",
+    "tag": "LGB",
+    "info": "LightGBM added to ensemble."
+  },
+  {
+    "time": "2025-11-22 03:12:02",
+    "tag": "CAT",
+    "info": "CatBoost added to ensemble."
+  },
+  {
+    "time": "2025-11-22 03:12:04",
+    "tag": "CALIB",
+    "info": "RF calibrated (sigmoid) in 1.9s"
+  },
+  {
+    "time": "2025-11-22 03:12:20",
+    "tag": "CALIB",
+    "info": "GB calibrated (sigmoid) in 15.5s"
+  },
+  {
+    "time": "2025-11-22 03:12:23",
+    "tag": "CALIB",
+    "info": "ET calibrated (sigmoid) in 3.5s"
+  },
+  {
+    "time": "2025-11-22 03:20:48",
+    "tag": "STACK",
+    "info": "Stacking trained in 504.4s with 6 base learners."
+  },
+  {
+    "time": "2025-11-22 03:20:48",
+    "tag": "BLEND",
+    "info": "Weight combos to try: 209"
+  },
+  {
+    "time": "2025-11-22 03:33:16",
+    "tag": "BLEND_DONE",
+    "info": "Best weights {'rf': 1.25, 'gb': 1.0, 'et': 0.75} with CV F1_macro=0.9819 in 748.3s"
+  },
+  {
+    "time": "2025-11-22 03:33:19",
+    "tag": "CM",
+    "info": "Saved confusion_matrix.png"
+  },
+  {
+    "time": "2025-11-22 03:33:19",
+    "tag": "FI",
+    "info": "Saved feature_importance_rf_et.csv"
+  },
+  {
+    "time": "2025-11-22 03:33:22",
+    "tag": "SAVE",
+    "info": "Saved dept_models.pkl"
+  }
+]

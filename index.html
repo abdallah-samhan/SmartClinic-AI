@@ -1,0 +1,459 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الطبيب الذكي — واجهة محادثة (M1 → M2)</title>
+  <style>
+    :root{
+      --bg:#0f172a;           /* slate-900 */
+      --panel:#111827;        /* gray-900 */
+      --muted:#334155;        /* slate-600 */
+      --card:#0b1220;         /* dark panel */
+      --text:#e5e7eb;         /* gray-200 */
+      --text-dim:#cbd5e1;     /* slate-300 */
+      --primary:#22c55e;      /* green-500 */
+      --accent:#38bdf8;       /* sky-400 */
+      --warn:#f59e0b;         /* amber-500 */
+      --danger:#ef4444;       /* red-500 */
+      --chip:#1f2937;         /* gray-800 */
+      --bubble-user:#1e293b;  /* slate-800 */
+      --bubble-bot:#111827;   /* gray-900 */
+      --input:#0b1220;        /* card */
+      --border:#1f2937;       /* gray-800 */
+      --ok:#16a34a;           /* green-600 */
+    }
+    * { box-sizing:border-box; }
+    html,body{height:100%;}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+      display:flex; flex-direction:column; gap:0.75rem;
+    }
+    header{
+      background:var(--panel); border-bottom:1px solid var(--border);
+      padding:0.75rem 1rem; display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;
+      position:sticky; top:0; z-index:10;
+    }
+    header .brand{font-weight:700; color:var(--accent)}
+    header input[type=text]{
+      background:var(--input); color:var(--text);
+      border:1px solid var(--border); border-radius:8px; padding:0.5rem 0.75rem; min-width:280px;
+    }
+    header button, .btn{
+      background:var(--chip); color:var(--text); border:1px solid var(--border);
+      padding:0.5rem 0.75rem; border-radius:8px; cursor:pointer;
+    }
+    header button:hover, .btn:hover{ filter:brightness(1.1); }
+
+    main{ display:grid; grid-template-columns: 1fr 360px; gap:0.75rem; padding:0 0.75rem 0.75rem; }
+    @media (max-width: 1100px){ main{ grid-template-columns: 1fr; } }
+
+    /* Chat area */
+    #chat-wrapper{ background:var(--panel); border:1px solid var(--border); border-radius:12px; display:flex; flex-direction:column; height:calc(100vh - 150px); }
+    #chat-log{ flex:1; overflow:auto; padding:1rem; display:flex; flex-direction:column; gap:0.75rem; }
+    .msg{ display:flex; gap:0.6rem; align-items:flex-end; }
+    .msg .bubble{ max-width:780px; padding:0.6rem 0.8rem; border-radius:10px; line-height:1.6; border:1px solid var(--border); }
+    .msg.user{ justify-content:flex-start; }
+    .msg.user .bubble{ background:var(--bubble-user); }
+    .msg.bot{ justify-content:flex-start; }
+    .msg.bot .bubble{ background:var(--bubble-bot); }
+    .timestamp{ color:var(--muted); font-size:12px; }
+
+    /* Ask forms */
+    #ask-card, #more-card{ border-top:1px dashed var(--border); background:var(--card); padding:0.75rem 1rem; }
+    .ask-title{ margin:0 0 0.5rem; color:var(--text-dim); }
+    form .field{ margin:0.5rem 0; }
+    .field label{ display:block; margin-bottom:0.35rem; color:var(--text-dim); }
+    .field input[type=text], .field input[type=number]{ width:100%; background:var(--input); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:0.5rem; }
+    .opt{ display:flex; align-items:center; gap:0.5rem; margin:0.25rem 0; }
+    .opt input{ transform:scale(1.2); }
+
+    .actions{ display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+    .actions .primary{ background:var(--primary); border-color:transparent; color:#0b1220; font-weight:600; }
+    .actions .danger{ background:var(--danger); border-color:transparent; color:white; }
+    .actions .ghost{ background:transparent; }
+
+    /* Right panel */
+    #side{ background:var(--panel); border:1px solid var(--border); border-radius:12px; display:flex; flex-direction:column; }
+    #stepper{ display:flex; gap:0.35rem; flex-wrap:wrap; padding:0.75rem; border-bottom:1px solid var(--border); }
+    .step{ padding:0.25rem 0.5rem; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--text-dim); font-size:12px; }
+    .step.active{ background:var(--accent); color:#072c3a; border-color:transparent; font-weight:700; }
+    .step.done{ background:var(--ok); color:#062a17; border-color:transparent; font-weight:700; }
+
+    #debug{ padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem; }
+    #debug pre{ background:#020617; color:#e2e8f0; border:1px solid var(--border); border-radius:8px; padding:0.5rem; max-height:240px; overflow:auto; }
+    .kv{ display:flex; justify-content:space-between; gap:0.75rem; font-family:monospace; font-size:13px; }
+    .kv b{ color:var(--text-dim); }
+    hr{ border:none; border-top:1px solid var(--border); }
+
+    /* Input bar */
+    #inputbar{ display:flex; gap:0.5rem; border-top:1px solid var(--border); padding:0.6rem; }
+    #user-text{ flex:1; background:var(--input); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:0.6rem; }
+    #send{ background:var(--primary); color:#062a17; border-radius:8px; border:none; padding:0 1rem; font-weight:700; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">⚕️ الطبيب الذكي</span>
+    <input id="base" type="text" value="http://localhost:5000" title="Base URL" />
+    <button id="start" title="بدء جلسة">بدء</button>
+    <button id="reset" title="إعادة ضبط الجلسة">إعادة ضبط</button>
+    <button id="toggleDebug">إظهار/إخفاء التصحيح</button>
+    <span class="timestamp" id="status"></span>
+  </header>
+
+  <main>
+    <section id="chat-wrapper">
+      <div id="chat-log"></div>
+
+      <!-- بطاقة أسئلة عامة (ask) -->
+      <div id="ask-card" hidden>
+        <h3 class="ask-title">الأسئلة</h3>
+        <form id="ask-form"></form>
+        <div class="actions">
+          <button class="btn primary" id="submit-answers">إرسال الإجابات</button>
+          <button class="btn" id="select-all" title="تحديد كل الخيارات الظاهرة (للـ Checkbox)">تحديد الكل</button>
+          <button class="btn ghost" id="next-batch" title="تحديد الكل والإرسال (تسريع للوصول إلى M2)">تسريع الدفعة</button>
+        </div>
+      </div>
+
+      <!-- بطاقة: هل لديك أعراض أخرى؟ (نعم/لا) بعد النص الحر -->
+      <div id="more-card" hidden>
+        <h3 class="ask-title">هل لديك أعراض أخرى؟</h3>
+        <form id="more-form">
+          <div class="opt">
+            <input type="radio" name="more" value="more_yes" id="more_yes">
+            <label for="more_yes">نعم</label>
+          </div>
+          <div class="opt">
+            <input type="radio" name="more" value="more_no" id="more_no">
+            <label for="more_no">لا</label>
+          </div>
+        </form>
+        <div class="actions">
+          <button class="btn primary" id="submit-more">متابعة</button>
+        </div>
+      </div>
+
+      <!-- شريط الإدخال -->
+      <div id="inputbar">
+        <input id="user-text" type="text" placeholder="اكتب الأعراض أو الرسالة..." />
+        <button id="send">إرسال</button>
+      </div>
+    </section>
+
+    <aside id="side">
+      <div id="stepper"></div>
+      <div id="debug">
+        <div class="kv"><b>SID</b><span id="dbg-sid">—</span></div>
+        <div class="kv"><b>الطور/الوضع</b><span id="dbg-mode">M1</span></div>
+        <div class="kv"><b>آخر مسار</b><span id="dbg-path">—</span></div>
+        <div class="kv"><b>الحالة</b><span id="dbg-state">—</span></div>
+        <hr/>
+        <div><div class="kv"><b>الطلب</b><span></span></div><pre id="dbg-req">{}</pre></div>
+        <div><div class="kv"><b>الرد</b><span></span></div><pre id="dbg-res">{}</pre></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+  // عناصر الواجهة
+  const els = {
+    base:document.getElementById('base'),
+    start:document.getElementById('start'),
+    reset:document.getElementById('reset'),
+    toggleDebug:document.getElementById('toggleDebug'),
+    status:document.getElementById('status'),
+    chat:document.getElementById('chat-log'),
+    askCard:document.getElementById('ask-card'),
+    askForm:document.getElementById('ask-form'),
+    submitAnswers:document.getElementById('submit-answers'),
+    selectAll:document.getElementById('select-all'),
+    nextBatch:document.getElementById('next-batch'),
+    input:document.getElementById('user-text'),
+    send:document.getElementById('send'),
+    stepper:document.getElementById('stepper'),
+    dbg:document.getElementById('debug'),
+    dbgSid:document.getElementById('dbg-sid'),
+    dbgMode:document.getElementById('dbg-mode'),
+    dbgPath:document.getElementById('dbg-path'),
+    dbgState:document.getElementById('dbg-state'),
+    dbgReq:document.getElementById('dbg-req'),
+    dbgRes:document.getElementById('dbg-res'),
+    moreCard:document.getElementById('more-card'),
+    moreForm:document.getElementById('more-form'),
+    submitMore:document.getElementById('submit-more')
+  };
+
+  // حالة عامة
+  let base = els.base.value.trim();
+  let sid  = (typeof window.sid !== 'undefined') ? window.sid : null;
+  let mode = 'M1';
+  let step = 'init';
+  let lastAsk = [];
+
+  // إتاحة الدوال للاختبار من F12
+  window.api  = api;
+  window.chat = chat;
+  window.ctl  = ctl;
+  window.getSid = () => sid;
+  window.setSid = (v) => { sid = v; window.sid = v; renderDebug(); };
+
+  function now(){ const d = new Date(); return d.toLocaleTimeString('ar-EG',{hour12:false}); }
+  function addMsg(role, text){
+    const row = document.createElement('div');
+    row.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    const bub = document.createElement('div'); bub.className = 'bubble'; bub.textContent = text;
+    const ts = document.createElement('span'); ts.className = 'timestamp'; ts.textContent = now();
+    row.appendChild(bub); row.appendChild(ts);
+    els.chat.appendChild(row);
+    els.chat.scrollTop = els.chat.scrollHeight;
+  }
+
+  function renderStepper(){
+    const steps = [
+      {id:'init', label:'بدء'},
+      {id:'lang', label:'اختيار اللغة'},
+      {id:'free', label:'نص حر'},
+      {id:'m1',  label:'M1 أعراض'},
+      {id:'m2',  label:'M2 تقييم'},
+      {id:'done',label:'نتيجة'}
+    ];
+    els.stepper.innerHTML = '';
+    const currentIndex = steps.findIndex(x => x.id === step);
+    for(const s of steps){
+      const chip = document.createElement('span');
+      const sIndex = steps.findIndex(x => x.id === s.id);
+      const cls = (step===s.id) ? ' active'
+               : ((['lang','free','m1','m2','done'].includes(step) && sIndex < currentIndex) ? ' done' : '');
+      chip.className = 'step' + cls;
+      chip.textContent = s.label;
+      els.stepper.appendChild(chip);
+    }
+  }
+
+  function renderDebug(req=null, res=null, path='—'){
+    els.dbgSid.textContent  = sid  || '—';
+    els.dbgMode.textContent = mode || '—';
+    els.dbgPath.textContent = path || '—';
+    els.dbgState.textContent= step || '—';
+    if(req !== null) els.dbgReq.textContent = JSON.stringify(req, null, 2);
+    if(res !== null) els.dbgRes.textContent = JSON.stringify(res, null, 2);
+  }
+
+  function detectStepFromAsk(list){
+    const names = list.map(q => q.name || '');
+    if(names.includes('user_language'))      { step = 'lang'; return; }
+    if(names.includes('free_text_symptoms')) { step = 'free'; return; }
+    if(names.includes('symptoms_m1'))        { step = 'm1';  mode='M1'; return; }
+    step = 'm2'; mode='M2';
+  }
+
+  function renderAsk(list){
+    lastAsk = Array.isArray(list) ? list : [list];
+    if(!lastAsk.length){ els.askCard.hidden = true; return; }
+    detectStepFromAsk(lastAsk);
+    renderStepper();
+    els.askForm.innerHTML = '';
+
+    for(const q of lastAsk){
+      const field = document.createElement('div'); field.className = 'field';
+      const label = document.createElement('label'); label.textContent = q.q || q.q_en || q.name; field.appendChild(label);
+
+      if(q.type === 'radio' && Array.isArray(q.options)){
+        for(const opt of q.options){
+          const v = (typeof opt === 'object') ? (opt.value ?? opt.label) : opt;
+          const l = (typeof opt === 'object') ? (opt.label ?? opt.value) : opt;
+          const row = document.createElement('div'); row.className = 'opt';
+          const inp = document.createElement('input'); inp.type='radio'; inp.name=q.name; inp.value=v;
+          const span= document.createElement('span'); span.textContent = l;
+          row.appendChild(inp); row.appendChild(span); field.appendChild(row);
+        }
+      } else if(q.type === 'checkbox' && Array.isArray(q.options)){
+        for(const opt of q.options){
+          const v = (typeof opt === 'object') ? (opt.value ?? opt.label) : opt;
+          const l = (typeof opt === 'object') ? (opt.label ?? opt.value) : opt;
+          const row = document.createElement('div'); row.className='opt';
+          const inp = document.createElement('input'); inp.type='checkbox'; inp.name=q.name; inp.value=v;
+          const span= document.createElement('span'); span.textContent = l;
+          row.appendChild(inp); row.appendChild(span); field.appendChild(row);
+        }
+      } else if(q.type === 'number'){
+        const inp = document.createElement('input'); inp.type='number'; inp.name=q.name; inp.step='any';
+        field.appendChild(inp);
+      } else { // text/other
+        const inp = document.createElement('input'); inp.type='text'; inp.name=q.name;
+        field.appendChild(inp);
+      }
+      els.askForm.appendChild(field);
+    }
+    els.askCard.hidden = false;
+    els.moreCard.hidden = true; // عند وجود ask جديد، نخفي كارت نعم/لا
+  }
+
+  // طبقة API
+  async function api(path, body={}){
+    base = els.base.value.trim();
+    const res = await fetch(base + path, {
+      method:'POST',
+      headers: { 'Content-Type':'application/json', 'X-Session-Id': sid || '' },
+      body: JSON.stringify(body)
+    });
+    const json = await res.json().catch(()=>({}));
+    if(json && json.sid){ sid = json.sid; window.sid = sid; }
+    renderDebug(body, json, path);
+    return json;
+  }
+  async function chat(payload={}){ return api('/api/chat_m1', payload); }
+  async function ctl(payload={}) { return api('/api/controller', payload); }
+
+  // تجميع إجابات ask-card
+  function collectAnswers(){
+    const data = {};
+    const fd = new FormData(els.askForm);
+    const names = new Set();
+    for(const el of els.askForm.querySelectorAll('[name]')) names.add(el.name);
+    for(const name of names){
+      const inputs = els.askForm.querySelectorAll(`[name="${CSS.escape(name)}"]`);
+      if(inputs[0]?.type === 'checkbox'){
+        data[name] = [];
+        inputs.forEach(inp => { if(inp.checked) data[name].push(inp.value); });
+      } else if(inputs[0]?.type === 'radio'){
+        const checked = els.askForm.querySelector(`[name="${CSS.escape(name)}"]:checked`);
+        if(checked) data[name] = checked.value;
+      } else {
+        data[name] = fd.get(name);
+      }
+    }
+    return data;
+  }
+
+  // هل نستخدم chat أم controller لهذا الـ ask؟
+  function shouldUseChat(askList){
+    const names = askList.map(q=>q.name||'');
+    return names.every(n => n === 'user_language' || n === 'free_text_symptoms');
+  }
+
+  // إرسال إجابات ask-card
+  async function submitAnswers(autoSelectAll=false){
+    if(!lastAsk.length) return;
+
+    // تسهيل: تحديد كل خيارات checkbox
+    if(autoSelectAll){
+      for(const q of lastAsk){
+        if(q.name === 'symptoms_m1'){
+          els.askForm.querySelectorAll('[name="symptoms_m1"]').forEach(inp => inp.checked = true);
+        }
+      }
+    }
+
+    const answers = collectAnswers();
+    addMsg('user', 'إجابة: ' + JSON.stringify(answers));
+
+    let resp;
+    if(shouldUseChat(lastAsk)){ resp = await chat({ answers }); }
+    else                     { resp = await ctl({ answers }); }
+
+    handleResponse(resp);
+  }
+
+  // الجديد: إرسال more_yes / more_no بعد النص الحر
+  async function submitMore(){
+    const checked = els.moreForm.querySelector('[name="more"]:checked');
+    if(!checked){ addMsg('bot','اختر نعم أو لا من السؤال.'); return; }
+    const intent = checked.value;  // 'more_yes' أو 'more_no'
+    addMsg('user', intent === 'more_yes' ? 'نعم، لدي أعراض أخرى' : 'لا، ليس لدي المزيد');
+    const r = await chat({ intent });
+    handleResponse(r);
+  }
+
+  // معالجة الردود
+  function handleResponse(resp){
+    if(!resp) return;
+
+    // 1) ask → اعرضه
+    if(resp.ask){
+      const list = Array.isArray(resp.ask) ? resp.ask : [resp.ask];
+      els.moreCard.hidden = true; // إخفاء كارت نعم/لا
+      renderAsk(list);
+      const title = list.map(q=>q.q || q.q_en || q.name).join('\n');
+      addMsg('bot', 'أسئلة جديدة:\n' + title);
+      return;
+    }
+
+    // 2) تلميح UI: هل لديك أعراض أخرى؟ (بعد النص الحر)
+    if(resp.ui_hint && resp.ui_hint.ask_more_symptoms){
+      step = 'free'; renderStepper();
+      els.askCard.hidden  = true;
+      els.moreCard.hidden = false;
+      addMsg('bot','هل لديك أعراض أخرى؟');
+      return;
+    }
+
+    // 3) ملاحظات
+    if(resp.note){ addMsg('bot', String(resp.note)); }
+
+    // 4) نتيجة نهائية
+    if(resp.final_diagnosis){
+      step = 'done'; renderStepper();
+      const d = resp.final_diagnosis || {}; const nlg = resp.final_diagnosis_nlg || {};
+      addMsg('bot', `✅ النتيجة: ${d.disease || '—'} — ${d.percentage ?? '—'}%`);
+      if(nlg.title || nlg.summary){ addMsg('bot', `📝 ${nlg.title || ''}\n${nlg.summary || ''}`); }
+      els.askCard.hidden  = true;
+      els.moreCard.hidden = true;
+      return;
+    }
+
+    // 5) افتراضي: اطبع الرد كما هو
+    addMsg('bot', JSON.stringify(resp));
+  }
+
+  // الأحداث
+  els.start.addEventListener('click', async ()=>{
+    addMsg('bot', 'بدء الجلسة...');
+    const r = await chat({});
+    handleResponse(r);
+  });
+
+  els.reset.addEventListener('click', async ()=>{
+    try{
+      const r = await fetch(els.base.value.trim() + '/api/reset_sid', {
+        method:'POST', headers: { 'X-Session-Id': sid || '' }
+      });
+      const j = await r.json().catch(()=>({}));
+      addMsg('bot', 'إعادة ضبط: ' + JSON.stringify(j));
+    }catch(e){ addMsg('bot', 'خطأ في إعادة الضبط: ' + e); }
+    sid = null; window.sid = null;
+    mode='M1'; step='init'; lastAsk=[];
+    renderStepper(); renderDebug();
+    els.askCard.hidden  = true;
+    els.moreCard.hidden = true;
+    els.chat.scrollTop  = els.chat.scrollHeight;
+  });
+
+  els.toggleDebug.addEventListener('click', ()=>{
+    els.dbg.style.display = (els.dbg.style.display === 'none') ? 'block' : 'none';
+  });
+
+  els.send.addEventListener('click', async ()=>{
+    const msg = els.input.value.trim(); if(!msg) return;
+    els.input.value = '';
+    addMsg('user', msg);
+    const r = await chat({ message: msg });
+    handleResponse(r);
+  });
+
+  els.submitAnswers.addEventListener('click', async (e)=>{ e.preventDefault(); submitAnswers(false); });
+  els.selectAll.addEventListener('click',  (e)=>{ e.preventDefault(); els.askForm.querySelectorAll('input[type=checkbox]').forEach(inp => inp.checked = true); });
+  els.nextBatch.addEventListener('click',  async (e)=>{ e.preventDefault(); submitAnswers(true); });
+  els.submitMore.addEventListener('click', async (e)=>{ e.preventDefault(); submitMore(); });
+
+  // أول رسم
+  renderStepper(); renderDebug();
+  addMsg('bot', 'مرحبًا! اضغط "بدء" لبدء الجلسة، أو اكتب الأعراض مباشرة ثم اضغط إرسال.');
+  </script>
+</body>
+</html>
+``

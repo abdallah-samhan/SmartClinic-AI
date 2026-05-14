@@ -1,0 +1,22 @@
+{
+  "breathing_problem": 1,
+  "fever": 1,
+  "dry_cough": 1,
+  "sore_throat": 0,
+  "running_nose": 0,
+  "asthma": 0,
+  "chronic_lung_disease": 0,
+  "headache": 1,
+  "heart_disease": 0,
+  "diabetes": 0,
+  "hyper_tension": 0,
+  "fatigue": 1,
+  "gastrointestinal": 0,
+  "abroad_travel": 0,
+  "contact_with_covid_patient": 1,
+  "attended_large_gathering": 1,
+  "visited_public_exposed_places": 1,
+  "family_working_public_places": 0,
+  "wearing_masks": 1,
+  "sanitization_from_market": 1
+}

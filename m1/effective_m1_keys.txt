@@ -1,0 +1,50 @@
+fatigue_general
+fever_general
+Cough
+difficulty_breathing
+scaly patches on the skin
+nausea_or_vomiting
+swelling
+back_pain
+fractures
+jaundice
+distinct facial features (small jaw)
+wheezing
+numbness_or_weakness_general
+swelling of the legs or ankles
+intellectual disability
+chest_pain
+increased urination or urine changes
+headaches
+developmental delays
+rash_general
+high blood pressure
+decreased appetite
+difficulty concentrating
+blood_in_urine_or_stool
+slow healing of wounds
+facial_numbness_or_weakness
+abnormal_urine
+heart_rate_issues
+painful urination
+redness_general
+abdominal_pain_general
+pelvic pain
+frequent urination
+weight_loss_severe_or_unintentional
+weight_changes_general
+loss of appetite
+jaw or arm pain
+severe headache
+heart_rate_irregularities
+sweating
+dizziness
+blind_spots
+joint_muscle_pain
+sleep_or_appetite_changes
+post-nasal drip
+Frequent Nosebleeds
+thick nasal discharge
+bleeding tendencies
+bleeding_and_bruising
+stiffness

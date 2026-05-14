@@ -1,0 +1,132 @@
+feature_key,ar_synonyms_count,ar_pos_success,ar_neg_suppressed_all,ar_pos_example,ar_neg_example,en_pos_example
+prolonged_bleeding_from_wounds_or_after_dental_work_or_surgery,0,0,0,,,Patient reports prolonged bleeding from wounds or after dental work or surgery.
+paralysis_of_the_limbs,0,0,0,,,Patient reports paralysis of the limbs.
+seizures,0,0,0,,,Patient reports seizures.
+sleep_disturbances,0,0,0,,,Patient reports sleep disturbances.
+frequent_crying,0,0,0,,,Patient reports frequent crying.
+itchy,0,0,0,,,Patient reports itchy.
+shaking,0,0,0,,,Patient reports shaking.
+pus_or_drainage_from_the_wound,0,0,0,,,Patient reports pus or drainage from the wound.
+loss_of_interest_or_pleasure_in_activities,0,0,0,,,Patient reports loss of interest or pleasure in activities.
+dark_urine,0,0,0,,,Patient reports dark urine.
+loss_of_sensation_in_the_face_or_other_areas,0,0,0,,,Patient reports loss of sensation in the face or other areas.
+intellectual_disability,0,0,0,,,Patient reports intellectual disability.
+distinct_facial_features_small_jaw,0,0,0,,,Patient reports distinct facial features small jaw.
+fragile_bones,0,0,0,,,Patient reports fragile bones.
+excessive_worrying,0,0,0,,,Patient reports excessive worrying.
+raynaud_s_phenomenon,0,0,0,,,Patient reports raynaud s phenomenon.
+panic_attacks,0,0,0,,,Patient reports panic attacks.
+cholecystectomy,0,0,0,,,Patient reports cholecystectomy.
+fluid_drainage_from_the_ear,0,0,0,,,Patient reports fluid drainage from the ear.
+elevated_cholesterol_levels,0,0,0,,,Patient reports elevated cholesterol levels.
+rapid_pulse,0,0,0,,,Patient reports rapid pulse.
+hearing_loss,0,0,0,,,Patient reports hearing loss.
+difficulty_swallowing,0,0,0,,,Patient reports difficulty swallowing.
+restlessness,0,0,0,,,Patient reports restlessness.
+rough,0,0,0,,,Patient reports rough.
+with_associated_swelling,0,0,0,,,Patient reports with associated swelling.
+difficulty_bonding_with_the_baby,0,0,0,,,Patient reports difficulty bonding with the baby.
+skin_abnormalities,0,0,0,,,Patient reports skin abnormalities.
+tremors,0,0,0,,,Patient reports tremors.
+facial_weakness_or_paralysis,0,0,0,,,Patient reports facial weakness or paralysis.
+sudden,0,0,0,,,Patient reports sudden.
+sensitivity_to_light_and_sound,0,0,0,,,Patient reports sensitivity to light and sound.
+or_face,0,0,0,,,Patient reports or face.
+trouble_concentrating_or_making_decisions,0,0,0,,,Patient reports trouble concentrating or making decisions.
+sweating,0,0,0,,,Patient reports sweating.
+sphincterotomy,0,0,0,,,Patient reports sphincterotomy.
+abnormal_bleeding_or_spotting,0,0,0,,,Patient reports abnormal bleeding or spotting.
+infertility,0,0,0,,,Patient reports infertility.
+gradual_loss_of_vision,0,0,0,,,Patient reports gradual loss of vision.
+swollen_and_tender_abdomen,0,0,0,,,Patient reports swollen and tender abdomen.
+hoarseness,0,0,0,,,Patient reports hoarseness.
+cyanosis_bluish_discoloration_of_the_skin,0,0,0,,,Patient reports cyanosis bluish discoloration of the skin.
+pale_stools,0,0,0,,,Patient reports pale stools.
+brief_muscle_contractions_or_jerks,0,0,0,,,Patient reports brief muscle contractions or jerks.
+slow_healing_of_wounds,0,0,0,,,Patient reports slow healing of wounds.
+hearing_loss_or_muffled_hearing_in_the_affected_ear,0,0,0,,,Patient reports hearing loss or muffled hearing in the affected ear.
+endoscopic_retrograde_cholangiopancreatography_ercp_with_stone_removal,0,0,0,,,Patient reports endoscopic retrograde cholangiopancreatography ercp with stone removal.
+frequent_infections,0,0,0,,,Patient reports frequent infections.
+manic_episodes,0,0,0,,,Patient reports manic episodes.
+salty_tasting_skin,0,0,0,,,Patient reports salty tasting skin.
+fluid_retention,0,0,0,,,Patient reports fluid retention.
+confusion,0,0,0,,,Patient reports confusion.
+swollen_lymph_nodes,0,0,0,,,Patient reports swollen lymph nodes.
+hopelessness,0,0,0,,,Patient reports hopelessness.
+high_blood_pressure,0,0,0,,,Patient reports high blood pressure.
+sensitivity_to_cold,0,0,0,,,Patient reports sensitivity to cold.
+lymphedema,0,0,0,,,Patient reports lymphedema.
+loss_of_height_over_time,0,0,0,,,Patient reports loss of height over time.
+halos_around_lights,0,0,0,,,Patient reports halos around lights.
+pale_skin,0,0,0,,,Patient reports pale skin.
+urgency,0,0,0,,,Patient reports urgency.
+eye_movement_abnormalities,0,0,0,,,Patient reports eye movement abnormalities.
+frequent_urination,0,0,0,,,Patient reports frequent urination.
+excessive_hair_growth,0,0,0,,,Patient reports excessive hair growth.
+recurrent_lung_infections,0,0,0,,,Patient reports recurrent lung infections.
+emptiness,0,0,0,,,Patient reports emptiness.
+usually_in_the_evening_or_at_night,0,0,0,,,Patient reports usually in the evening or at night.
+stiffness,0,0,0,,,Patient reports stiffness.
+malaise,0,0,0,,,Patient reports malaise.
+lump_or_swelling_in_the_testicles,0,0,0,,,Patient reports lump or swelling in the testicles.
+swollen_eyelids,0,0,0,,,Patient reports swollen eyelids.
+slowness_of_movement,0,0,0,,,Patient reports slowness of movement.
+difficulty_speaking_or_walking,0,0,0,,,Patient reports difficulty speaking or walking.
+lack_of_interest,0,0,0,,,Patient reports lack of interest.
+decreased_urine_output,0,0,0,,,Patient reports decreased urine output.
+changes_in_testicular_size_or_shape,0,0,0,,,Patient reports changes in testicular size or shape.
+often_in_the_limbs,0,0,0,,,Patient reports often in the limbs.
+enlarged_spleen_or_liver,0,0,0,,,Patient reports enlarged spleen or liver.
+swollen_salivary_glands_usually_parotid,0,0,0,,,Patient reports swollen salivary glands usually parotid.
+inflamed_skin,0,0,0,,,Patient reports inflamed skin.
+ovarian_cysts,0,0,0,,,Patient reports ovarian cysts.
+abnormal_sweating,0,0,0,,,Patient reports abnormal sweating.
+difficulty_concentrating,0,0,0,,,Patient reports difficulty concentrating.
+watery_discharge,0,0,0,,,Patient reports watery discharge.
+increased_urination_or_urine_changes,0,0,0,,,Patient reports increased urination or urine changes.
+vision_problems,0,0,0,,,Patient reports vision problems.
+restricted_interests_or_repetitive_behaviors,0,0,0,,,Patient reports restricted interests or repetitive behaviors.
+irritability,0,0,0,,,Patient reports irritability.
+gastrointestinal_symptoms,0,0,0,,,Patient reports gastrointestinal symptoms.
+persistent_feelings_of_sadness,0,0,0,,,Patient reports persistent feelings of sadness.
+muscle_wasting,0,0,0,,,Patient reports muscle wasting.
+rib_fractures_associated_injuries,0,0,0,,,Patient reports rib fractures associated injuries.
+transverse_myelitis_weakness,0,0,0,,,Patient reports transverse myelitis weakness.
+mood_swings,0,0,0,,,Patient reports mood swings.
+irregular_periods,0,0,0,,,Patient reports irregular periods.
+short_stature,0,0,0,,,Patient reports short stature.
+developmental_delays,0,0,0,,,Patient reports developmental delays.
+usually_in_sun_exposed_areas,0,0,0,,,Patient reports usually in sun exposed areas.
+lasting_for_at_least_two_years,0,0,0,,,Patient reports lasting for at least two years.
+nipple_changes,0,0,0,,,Patient reports nipple changes.
+tenderness,0,0,0,,,Patient reports tenderness.
+hallucinations,0,0,0,,,Patient reports hallucinations.
+persistent_depressive_symptoms_low_mood,0,0,0,,,Patient reports persistent depressive symptoms low mood.
+rapid_or_shallow_breathing,0,0,0,,,Patient reports rapid or shallow breathing.
+feelings_of_guilt_or_worthlessness,0,0,0,,,Patient reports feelings of guilt or worthlessness.
+limited_range_of_motion,0,0,0,,,Patient reports limited range of motion.
+thickening_of_the_skin,0,0,0,,,Patient reports thickening of the skin.
+trouble_speaking_or_understanding,0,0,0,,,Patient reports trouble speaking or understanding.
+especially_at_night_or_in_response_to_triggers_such_as_allergens_or_exercise,0,0,0,,,Patient reports especially at night or in response to triggers such as allergens or exercise.
+gonadal_dysgenesis,0,0,0,,,Patient reports gonadal dysgenesis.
+decreased_oxygen_levels,0,0,0,,,Patient reports decreased oxygen levels.
+distorted_body_image,0,0,0,,,Patient reports distorted body image.
+depends_on_the_specific_cranial_nerve_involved_symptoms_can_include_vision_changes,0,0,0,,,Patient reports depends on the specific cranial nerve involved symptoms can include vision changes.
+loss_of_bladder_or_bowel_control,0,0,0,,,Patient reports loss of bladder or bowel control.
+sensitivity_to_light,0,0,0,,,Patient reports sensitivity to light.
+cramping,0,0,0,,,Patient reports cramping.
+cognitive_problems,0,0,0,,,Patient reports cognitive problems.
+frequent_nosebleeds,0,0,0,,,Patient reports frequent nosebleeds.
+numbness_or_weakness_general,0,0,0,,,Patient reports numbness or weakness general.
+muscle_weakness,0,0,0,,,Patient reports muscle weakness.
+facial_numbness_or_weakness,0,0,0,,,Patient reports facial numbness or weakness.
+extremities_numbness_or_weakness,0,0,0,,,Patient reports extremities numbness or weakness.
+weight_changes_general,0,0,0,,,Patient reports weight changes general.
+spontaneous_bleeding_joints_muscles,0,0,0,,,Patient reports spontaneous bleeding joints muscles.
+preeclampsia,0,0,0,,,Patient reports preeclampsia.
+heart_rate_issues,0,0,0,,,Patient reports heart rate issues.
+heart_attack,0,0,0,,,Patient reports heart attack.
+depression_general,0,0,0,,,Patient reports depression general.
+movement_or_speech_difficulty,0,0,0,,,Patient reports movement or speech difficulty.
+heart_rate_irregularities,0,0,0,,,Patient reports heart rate irregularities.
+redness_general,0,0,0,,,Patient reports redness general.

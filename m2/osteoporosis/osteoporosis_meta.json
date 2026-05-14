@@ -1,0 +1,81 @@
+{
+  "features": [
+    "Age",
+    "Gender",
+    "Hormonal Changes",
+    "Family History",
+    "Race/Ethnicity",
+    "Body Weight",
+    "Calcium Intake",
+    "Vitamin D Intake",
+    "Physical Activity",
+    "Smoking",
+    "Alcohol Consumption",
+    "Medical Conditions",
+    "Medications",
+    "Prior Fractures"
+  ],
+  "numeric_feats": [
+    "Age"
+  ],
+  "categorical_feats": [
+    "Gender",
+    "Hormonal Changes",
+    "Family History",
+    "Race/Ethnicity",
+    "Body Weight",
+    "Calcium Intake",
+    "Vitamin D Intake",
+    "Physical Activity",
+    "Smoking",
+    "Alcohol Consumption",
+    "Medical Conditions",
+    "Medications",
+    "Prior Fractures"
+  ],
+  "threshold": 0.5,
+  "metrics": {
+    "roc_auc": 0.8728915035401916,
+    "accuracy": 0.8392857142857143,
+    "f1": 0.8173913043478261,
+    "precision": 0.9463087248322147,
+    "recall": 0.7193877551020408,
+    "confusion_matrix": [
+      [
+        188,
+        8
+      ],
+      [
+        55,
+        141
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.7736625514403292,
+        "recall": 0.9591836734693877,
+        "f1-score": 0.856492027334852,
+        "support": 196.0
+      },
+      "1": {
+        "precision": 0.9463087248322147,
+        "recall": 0.7193877551020408,
+        "f1-score": 0.8173913043478261,
+        "support": 196.0
+      },
+      "accuracy": 0.8392857142857143,
+      "macro avg": {
+        "precision": 0.859985638136272,
+        "recall": 0.8392857142857142,
+        "f1-score": 0.8369416658413391,
+        "support": 392.0
+      },
+      "weighted avg": {
+        "precision": 0.8599856381362719,
+        "recall": 0.8392857142857143,
+        "f1-score": 0.8369416658413391,
+        "support": 392.0
+      }
+    }
+  }
+}
