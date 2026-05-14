@@ -1,391 +1,476 @@
 # SmartClinic AI
 
-## 🏥 Overview
+### Intelligent Bilingual Healthcare Diagnostic System Powered by Machine Learning and NLP
 
-**SmartClinic AI** is an intelligent healthcare diagnostic system that combines machine learning and natural language processing to assist in clinical decision-making. The system provides a two-tiered classification approach:
+<p align="center">
 
-- **M1**: Department/specialty classification based on symptoms
-- **M2**: Specific disease prediction within the identified department
-- **B**: Baseline health screening
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg">
+  <img src="https://img.shields.io/badge/Flask-Backend-black.svg">
+  <img src="https://img.shields.io/badge/Scikit--Learn-MachineLearning-orange.svg">
+  <img src="https://img.shields.io/badge/NLP-Arabic%20%2B%20English-green.svg">
+  <img src="https://img.shields.io/badge/License-MIT-success.svg">
+  <img src="https://img.shields.io/badge/Status-Research%20Project-informational.svg">
 
-The system supports both English and Arabic interfaces, with intelligent symptom extraction, normalization, and context-aware questioning.
+</p>
 
----
-
-## ✨ Key Features
-
-### 🤖 Multi-Model Architecture
-- **M1 Predictor**: Department/specialty classification
-- **M2 Models**: Disease-specific predictions (COVID-19, Diabetes, Heart Disease, Osteoporosis)
-- **Ensemble Methods**: Weighted ensemble for improved accuracy
-- **Fallback Mechanisms**: Graceful degradation when models unavailable
-
-### 🌐 Language Support
-- **Arabic & English**: Full bilingual support with automatic language detection
-- **NLP Processing**: Intent extraction, symptom normalization, response localization
-- **LLM Integration**: OpenRouter API for enhanced text processing
-
-### 💬 Natural Interaction
-- Free-form text symptom input
-- Intelligent follow-up questions
-- Context-aware questionnaires
-- Checkbox-based refinement for ambiguous cases
-
-### 📊 Comprehensive Outputs
-- Department recommendations
-- Disease predictions with confidence scores
-- Feature importance analysis
-- Per-class importance tracking
+<p align="center">
+AI-powered clinical decision support system combining ensemble machine learning,
+bilingual NLP, and intelligent conversational diagnostics.
+</p>
 
 ---
 
-## 📋 Project Structure
+# Overview
 
+SmartClinic AI is a bilingual healthcare diagnostic assistant designed to support preliminary clinical decision-making using conversational symptom analysis and machine learning.
+
+The system combines:
+
+* Ensemble Machine Learning
+* Conversational NLP
+* Arabic and English language support
+* Disease risk prediction
+* LLM-enhanced symptom understanding
+
+The platform follows a two-stage diagnostic pipeline:
+
+| Stage | Description                                               |
+| ----- | --------------------------------------------------------- |
+| M1    | Medical department and specialty classification           |
+| M2    | Disease-specific prediction inside the selected specialty |
+
+---
+
+# Core Features
+
+## Intelligent ML Pipeline
+
+* Multi-stage healthcare classification system
+* Ensemble learning architecture
+* Feature importance-guided questioning
+* Context-aware symptom refinement
+* Confidence-based predictions
+
+## Arabic and English NLP
+
+* Bilingual conversational interaction
+* Arabic medical synonym normalization
+* English symptom extraction
+* Negation detection
+* Language-aware responses
+
+## LLM Integration
+
+Integrated with OpenRouter APIs for:
+
+* Symptom normalization
+* Fallback NLP extraction
+* AI-generated summaries
+* Conversational response enhancement
+
+## Interactive Clinical Workflow
+
+* Free-text symptom input
+* Dynamic follow-up questions
+* Checkbox-based refinement
+* Context-aware question generation
+* Personalized interaction flow
+
+## Explainable Predictions
+
+* Disease probability scores
+* Department classification confidence
+* Feature importance tracking
+* Transparent prediction pipeline
+
+---
+
+# System Architecture
+
+```mermaid
+flowchart TD
+
+A[User Symptoms] --> B[NLP Processing]
+
+B --> C[Symptom Extraction]
+C --> D[Language Normalization]
+D --> E[M1 Department Classifier]
+
+E --> F[Department Prediction]
+
+F --> G[Dynamic Question Generator]
+
+G --> H[M2 Disease Model]
+
+H --> I[Disease Risk Prediction]
+
+I --> J[LLM Summary Generation]
+
+J --> K[Final Clinical Report]
 ```
+
+---
+
+
+---
+
+# Project Demo
+
+This section demonstrates the real workflow of SmartClinic AI from symptom input to final prediction.
+
+---
+
+## M1 - Step 1: Symptom Analysis Flow
+
+<p align="center">
+  <img src="docs/screenshots/m1-flow1.png" width="850"/>
+</p>
+
+---
+
+## M1 - Step 2: Dynamic Questioning System
+
+<p align="center">
+  <img src="docs/screenshots/m1-flow2.png" width="850"/>
+</p>
+
+---
+
+## M2 - Disease Prediction Stage
+
+<p align="center">
+  <img src="docs/screenshots/m2-flow.png" width="850"/>
+</p>
+
+---
+
+## Final Diagnosis Result
+
+<p align="center">
+  <img src="docs/screenshots/result-page.png" width="850"/>
+</p>
+
+---
+
+# Machine Learning Architecture
+
+## M1 — Department Classification
+
+The first-stage classifier predicts the most relevant medical department based on extracted symptoms.
+
+### Algorithms Used
+
+* Random Forest
+* Extra Trees
+* Gradient Boosting
+* CatBoost
+* XGBoost
+* LightGBM
+
+### Additional Techniques
+
+* Weighted ensemble blending
+* Probability calibration
+* Feature importance ranking
+* SMOTE oversampling
+* RandomizedSearchCV optimization
+
+### Output
+
+Predicts one of multiple medical specialties including:
+
+* Cardiology
+* Neurology
+* Dermatology
+* Respiratory
+* Gastroenterology
+* Orthopedics
+* Psychiatry
+* Infectious Diseases
+* Internal Medicine
+
+---
+
+## M2 — Disease-Specific Prediction
+
+After department classification, specialized disease models are used for deeper analysis.
+
+### Current Disease Models
+
+| Disease       | Model Type             |
+| ------------- | ---------------------- |
+| Heart Disease | RandomForestClassifier |
+| Diabetes      | RandomForestClassifier |
+| COVID-19      | RandomForestClassifier |
+| Osteoporosis  | RandomForestClassifier |
+
+---
+
+# NLP Pipeline
+
+The NLP system combines rule-based extraction with LLM-assisted fallback mechanisms.
+
+## Processing Flow
+
+```text
+User Input
+   ↓
+Regex Extraction
+   ↓
+Arabic/English Synonym Matching
+   ↓
+Negation Detection
+   ↓
+Canonical Symptom Mapping
+   ↓
+LLM Fallback Extraction
+```
+
+## Supported NLP Features
+
+* Arabic medical terminology normalization
+* English symptom extraction
+* Negation handling
+* Context-aware interpretation
+* Synonym expansion
+* Bilingual interaction support
+
+---
+
+# Project Structure
+
+```bash
 SmartClinic-AI/
-├── core.py                          # Core logic: M1/M2 pipeline
-├── controller.py                    # Flask API endpoints
-├── llm_utils.py                     # LLM integration & NLP utilities
-├── agents_nlp.py                    # Arabic/English NLP agents
-├── requirements.txt                 # Python dependencies
-├── index.html                       # Frontend interface
 │
-├── m1/                             # Department Classification Model
-│   ├── m1.py                       # M1 model training
-│   ├── m1_predect_dept.py          # M1 predictor class
-│   ├── make_effective_m1_keys.py   # Feature engineering
-│   ├── per_class_feature_importance.py
-│   ├── report_weighted_ensemble.py
-│   ├── run_weighted_blend_on_csv.py
-│   ├── test_m1_predictor.py
-│   ├── training_log.json
-│   └── dept_models.pkl             # Pre-trained models (ignored by git)
+├── app/
+│   ├── controller.py
+│   ├── core.py
+│   ├── agents_nlp.py
+│   ├── llm_utils.py
+│   └── templates/
+│       └── index.html
 │
-├── m2/                             # Disease-Specific Models
-│   ├── covid/                      # COVID-19 Prediction
-│   │   ├── main.py
-│   │   ├── predict.py
-│   │   └── Covid.csv
-│   ├── diabetes_prediction/        # Diabetes Prediction
-│   │   ├── main.py
-│   │   ├── predict.py
-│   │   └── diabetes.csv
-│   ├── heart_disease2/             # Heart Disease Prediction
-│   │   ├── main.py
-│   │   └── predict.py
-│   └── osteoporosis/               # Osteoporosis Prediction
-│       ├── main.py
-│       ├── predict.py
-│       └── osteoporosis.csv
+├── models/
+│   ├── m1/
+│   └── m2/
 │
-├── .gitignore                       # Git ignore rules
-├── .env.example                     # Environment variables template
-└── README.md                        # This file
+├── data/
+│
+├── tests/
+│
+├── docs/
+│
+├── requirements.txt
+├── run.py
+├── .env.example
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+# Installation
 
-### Prerequisites
-- Python 3.8+
-- pip or conda
-- OpenRouter API key (for LLM features)
+## Clone Repository
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/SmartClinic-AI.git
-   cd SmartClinic-AI
-   ```
-
-2. **Create virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure environment**
-   ```bash
-   cp .env.example .env
-   # Edit .env and add your OPENROUTER_API_KEY
-   ```
-
-5. **Run the application**
-   ```bash
-   python controller.py
-   ```
-
-The application will start at `http://localhost:5000`
+```bash
+git clone https://github.com/abdallah-samhan/SmartClinic-AI.git
+cd SmartClinic-AI
+```
 
 ---
 
-## 📖 Usage
+## Create Virtual Environment
 
-### API Endpoints
+### Windows
 
-#### Initialize Consultation
 ```bash
-POST /api/start_consultation
-Content-Type: application/json
-
-{
-  "language": "ar"  # or "en"
-}
+python -m venv venv
+venv\Scripts\activate
 ```
 
-#### Submit User Input
+### Linux / macOS
+
 ```bash
-POST /api/ask
-Content-Type: application/json
-
-{
-  "user_message": "I have fever and cough",
-  "session_id": "xyz-123"
-}
+python3 -m venv venv
+source venv/bin/activate
 ```
-
-#### Submit Answers to Questions
-```bash
-POST /api/answer_question
-Content-Type: application/json
-
-{
-  "answer": "yes",
-  "session_id": "xyz-123"
-}
-```
-
-#### Get Disease Prediction
-```bash
-POST /api/get_result
-Content-Type: application/json
-
-{
-  "session_id": "xyz-123"
-}
-```
-
-### Frontend Usage
-1. Open `http://localhost:5000` in your browser
-2. Enter symptoms in natural language
-3. Answer follow-up questions from the AI
-4. Receive department recommendation and disease prediction
 
 ---
 
-## 🧠 Model Details
+## Install Dependencies
 
-### M1: Department Predictor
-- **Input**: Symptom features extracted and normalized from user input
-- **Output**: Department classification (Respiratory, Cardiovascular, Endocrinology, Orthopedics, etc.)
-- **Model Type**: Weighted Ensemble (RandomForest + ExtraTrees + CatBoost)
-- **Features**: 50+ engineered symptom indicators
-
-### M2: Disease Predictors
-Disease-specific models for deeper diagnosis:
-- **COVID-19**: Respiratory symptoms classification
-- **Diabetes**: Endocrinology risk factors
-- **Heart Disease**: Cardiovascular indicators
-- **Osteoporosis**: Bone health assessment
-
-### Ensemble Approach
-- Combines multiple algorithms for robustness
-- Per-class feature importance tracking
-- Weighted voting based on model performance
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## 🔧 Configuration
+## Configure Environment Variables
 
-### Environment Variables
+Create a `.env` file:
+
 ```env
-# Required
-OPENROUTER_API_KEY=sk-or-v1-your-api-key-here
-
-# Optional
-PKL_PATH=m1/dept_models.pkl
-OPENROUTER_MODEL=mistralai/mistral-7b-instruct:free
+OPENROUTER_API_KEY=your_api_key_here
 ```
-
-### Feature Flags (in llm_utils.py)
-- `USE_LLM_FALLBACK`: Enable fallback for LLM failures
-- `USE_LLM_TONE`: Enable tone/empathy enhancement
-- `USE_LLM_NORM`: Enable symptom normalization
-- `USE_LLM_TRANSLATE`: Enable language translation
-- `USE_LLM_NLG_Q`: Enable intelligent question generation
-- `USE_LLM_NLG_RESULT`: Enable result summarization
 
 ---
 
-## 📊 Data & Training
+## Run Application
 
-### Training Data
-- Department classification: Multi-source medical datasets
-- Disease-specific models: Public health datasets (Kaggle, UCI ML Repository)
-
-### Model Artifacts
-- Trained models stored in `.pkl` format (ignored by git)
-- Feature importance CSVs: `feature_importance_rf_et.csv`
-- Training logs: `m1/training_log.json`
-
-### Retraining
-To retrain models with new data:
 ```bash
-cd m1
-python m1.py --data new_data.csv --output models/
+python run.py
+```
+
+Application will run on:
+
+```text
+http://127.0.0.1:5000
 ```
 
 ---
 
-## ⚙️ Development
+# API Endpoints
 
-### Running Tests
+| Endpoint                       | Description          |
+| ------------------------------ | -------------------- |
+| POST `/api/start_consultation` | Start new session    |
+| POST `/api/ask`                | Submit symptoms      |
+| POST `/api/answer_question`    | Submit answers       |
+| POST `/api/get_result`         | Retrieve predictions |
+
+---
+
+# Datasets
+
+| Dataset                          | Purpose                      |
+| -------------------------------- | ---------------------------- |
+| grouped_by_department_merged.csv | Department classification    |
+| heart.csv                        | Heart disease prediction     |
+| diabetes.csv                     | Diabetes prediction          |
+| osteoporosis.csv                 | Osteoporosis prediction      |
+| Covid.csv                        | COVID-19 prediction          |
+| ar_synonyms_medical.csv          | Arabic symptom normalization |
+
+---
+
+# Performance
+
+| Metric                 | Score |
+| ---------------------- | ----- |
+| M1 Cross Validation F1 | 0.98  |
+| M1 Test Accuracy       | 85.3% |
+| Weighted F1 Score      | 0.85  |
+
+---
+
+# Technologies Used
+
+## Backend
+
+* Flask
+* Flask-CORS
+
+## Machine Learning
+
+* Scikit-learn
+* XGBoost
+* LightGBM
+* CatBoost
+* imbalanced-learn
+
+## NLP
+
+* OpenRouter API
+* Mistral 7B
+* Regex-based extraction
+* Arabic synonym matching
+
+## Data Processing
+
+* Pandas
+* NumPy
+
+## Frontend
+
+* HTML
+* CSS
+* Vanilla JavaScript
+
+---
+
+# Security
+
+## Important Notes
+
+* API keys are stored using environment variables
+* `.env` files are ignored by git
+* Input validation implemented on API layer
+* No credentials stored inside source code
+
+---
+
+# Development
+
+## Run Tests
+
 ```bash
-python test_core.py
-cd m1 && python test_m1_predictor.py
-```
-
-### Code Structure
-- **Modular Design**: Separate concerns (model, API, NLP)
-- **Error Handling**: Graceful fallbacks for missing dependencies
-- **Logging**: Comprehensive debug logging
-- **Bilingual**: Full Arabic/English support
-
----
-
-## 🔒 Security
-
-### Important Security Notes
-- **Never commit `.env` files** - API keys are secret
-- **Use environment variables** for all sensitive credentials
-- **Review `.gitignore`** before committing
-- **Rotate API keys regularly**
-- **Validate all user inputs** (implemented in controller.py)
-
-### API Key Management
-1. Generate keys from [OpenRouter Dashboard](https://openrouter.ai/keys)
-2. Store only in `.env` file (never in code)
-3. Add `.env` to `.gitignore` (already configured)
-4. Rotate keys if exposed
-
----
-
-## 📈 Performance
-
-### Model Accuracy
-- M1 (Department): ~89% accuracy on validation set
-- M2 (Disease-specific): 85-95% depending on disease
-- Ensemble provides robust predictions
-
-### Response Time
-- Symptom extraction: <200ms
-- Department prediction: <100ms
-- Disease prediction: <150ms
-- LLM operations (optional): 1-3s
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow PEP 8 style guide
-- Add docstrings to functions
-- Test your changes before submitting
-- Update README if adding features
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👥 Authors & Acknowledgments
-
-**SmartClinic Team**
-- AI/ML Development
-- Healthcare Integration
-- NLP & Language Support
-
-### Acknowledgments
-- OpenRouter for LLM API
-- Scikit-learn, Pandas, NumPy for ML tools
-- Flask for web framework
-- Community feedback and contributions
-
----
-
-## 📞 Support & Contact
-
-For questions, issues, or suggestions:
-
-- **GitHub Issues**: [Report bugs or request features](https://github.com/yourusername/SmartClinic-AI/issues)
-- **Discussions**: [Ask questions and share ideas](https://github.com/yourusername/SmartClinic-AI/discussions)
-- **Email**: team@smartclinic.ai
-
----
-
-## 🗺️ Roadmap
-
-### Planned Features
-- [ ] Mobile app (React Native)
-- [ ] Electronic health record (EHR) integration
-- [ ] Multi-language support expansion (French, Spanish, German)
-- [ ] Advanced symptom graph visualization
-- [ ] Patient history tracking
-- [ ] Confidence scoring improvements
-- [ ] Real-time model performance monitoring
-- [ ] Integration with telemedicine platforms
-
-### Known Limitations
-- Models trained on specific datasets (may not generalize to all populations)
-- Requires validated symptom features
-- LLM features depend on API availability
-- Recommendation: Always consult with healthcare professionals
-
----
-
-## ⚕️ Medical Disclaimer
-
-**⚠️ IMPORTANT**: This application is a **decision support tool only** and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare professionals before making medical decisions.
-
-The system provides predictions based on available data and models. Accuracy depends on:
-- Quality of input data
-- Model training data representation
-- Individual patient variations
-
----
-
-## 📊 Citation
-
-If you use SmartClinic AI in your research, please cite:
-
-```bibtex
-@software{smartclinic2024,
-  title={SmartClinic AI: Intelligent Healthcare Diagnostic System},
-  author={SmartClinic Team},
-  year={2024},
-  url={https://github.com/yourusername/SmartClinic-AI}
-}
+python tests/test_core.py
 ```
 
 ---
 
-**Last Updated**: 2024
-**Version**: 1.0.0
+## Retrain Models
+
+```bash
+cd models/m1
+python m1.py
+```
+
+---
+
+# Future Improvements
+
+* Additional disease-specific models
+* Transformer-based medical NLP
+* Docker deployment
+* Mobile application
+* Electronic Health Record integration
+* Real-time monitoring dashboard
+* Telemedicine integration
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+1. Fork repository
+2. Create feature branch
+3. Commit changes
+4. Push branch
+5. Open Pull Request
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+---
+
+# Medical Disclaimer
+
+SmartClinic AI is a research and educational project only.
+
+The system is not intended to replace professional medical diagnosis, treatment, or clinical judgment. Always consult qualified healthcare professionals before making medical decisions.
+
+---
+
+# Author
+
+Developed by Abdallah Samhan
+
+GitHub:
+[https://github.com/abdallah-samhan](https://github.com/abdallah-samhan)
